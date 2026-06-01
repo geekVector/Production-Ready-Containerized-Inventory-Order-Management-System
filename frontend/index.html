@@ -3,18 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Management System</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; text-align: center; }
-        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; margin-top: 50px; }
-        h1 { color: #333; }
-        p { color: #666; }
-    </style>
+    <title>Quantum Inventory Control</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>Inventory & Order System</h1>
-        <p>Welcome! Your frontend container and Vercel hosting are working perfectly.</p>
-    </div>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans">
+
+    <nav class="border-b border-slate-800 bg-slate-900/50 backdrop-blur px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="bg-indigo-600 p-2 rounded-lg text-white">
+                <i data-lucide="box" class="w-6 h-6"></i>
+            </div>
+            <div>
+                <span class="text-lg font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">IMS Enterprise</span>
+                <span class="text-xs block text-slate-500 font-mono">v1.0.0-live</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="flex items-center gap-2 text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1.5 rounded-full font-mono border border-emerald-500/20">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Vercel Node Live
+            </span>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-6 space-y-8">
+        
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+            <div>
+                <h1 class="text-3xl font-extrabold tracking-tight">Inventory Control Panel</h1>
+                <p class="text-slate-400 mt-1">Real-time supply chain monitoring, order processing, and tracking optimization analytics.</p>
+            </div>
+            <button class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 transition px-4 py-2.5 rounded-xl font-medium text-sm shadow-lg shadow-indigo-600/20">
+                <i data-lucide="plus" class="w-4 h-4"></i> Add New Product
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl relative overflow-hidden group">
+                <div class="absolute right-4 top-4 text-slate-700 group-hover:text-indigo-500 transition"><i data-lucide="package" class="w-8 h-8"></i></div>
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Total SKU Items</p>
+                <p class="text-3xl font-mono font-bold mt-2 text-indigo-400">1,248</p>
+                <p class="text-xs text-slate-500 mt-2 flex items-center gap-1 text-emerald-400"><i data-lucide="trending-up" class="w-3 h-3"></i> +12% from last month</p>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl relative overflow-hidden group">
+                <div class="absolute right-4 top-4 text-slate-700 group-hover:text-amber-500 transition"><i data-lucide="alert-triangle" class="w-8 h-8"></i></div>
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Low Stock Alerts</p>
+                <p class="text-3xl font-mono font-bold mt-2 text-amber-400">14</p>
+                <p class="text-xs text-slate-500 mt-2 flex items-center gap-1 text-amber-500/80">Requires immediate reorder</p>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl relative overflow-hidden group">
+                <div class="absolute right-4 top-4 text-slate-700 group-hover:text-cyan-500 transition"><i data-lucide="shopping-cart" class="w-8 h-8"></i></div>
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Pending Orders</p>
+                <p class="text-3xl font-mono font-bold mt-2 text-cyan-400">42</p>
+                <p class="text-xs text-slate-500 mt-2 flex items-center gap-1 text-cyan-400"><i data-lucide="clock" class="w-3 h-3"></i> 8 awaiting fulfillment</p>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl relative overflow-hidden group">
+                <div class="absolute right-4 top-4 text-slate-700 group-hover:text-emerald-500 transition"><i data-lucide="dollar-sign" class="w-8 h-8"></i></div>
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Gross Valuation</p>
+                <p class="text-3xl font-mono font-bold mt-2 text-emerald-400">$84,250</p>
+                <p class="text-xs text-slate-500 mt-2 flex items-center gap-1 text-emerald-400"><i data-lucide="shield-check" class="w-3 h-3"></i> Asset audit verified</p>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+            <div class="px-6 py-4 border-b border-slate-800 bg-slate-900/50 flex justify-between items-center">
+                <h2 class="text-lg font-bold">Current Stock Records</h2>
+                <div class="flex items-center gap-2 bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 w-64">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-500"></i>
+                    <input type="text" placeholder="Filter inventory..." class="bg-transparent text-sm focus:outline-none text-slate-200 w-full">
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-950/40 text-slate-400 text-xs font-mono uppercase tracking-wider border-b border-slate-800">
+                            <th class="px-6 py-4">Product Details</th>
+                            <th class="px-6 py-4">SKU Code</th>
+                            <th class="px-6 py-4">Category</th>
+                            <th class="px-6 py-4">Stock Level</th>
+                            <th class="px-6 py-4">Unit Price</th>
+                            <th class="px-6 py-4 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 text-sm">
+                        <tr class="hover:bg-slate-800/20 transition">
+                            <td class="px-6 py-4 font-medium text-slate-200">Quantum Edge Laptop x15</td>
+                            <td class="px-6 py-4 font-mono text-xs text-slate-400">SKU-COMP-4921</td>
+                            <td class="px-6 py-4 text-slate-400">Electronics</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                    <span>84 Units</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 font-mono">$1,299.00</td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="text-indigo-400 hover:text-indigo-300 font-medium px-3 py-1 rounded hover:bg-indigo-500/10 transition">Manage</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/20 transition">
+                            <td class="px-6 py-4 font-medium text-slate-200">HyperCharge Wireless Base</td>
+                            <td class="px-6 py-4 font-mono text-xs text-slate-400">SKU-POWR-8831</td>
+                            <td class="px-6 py-4 text-slate-400">Accessories</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                                    <span class="text-amber-400 font-medium">8 Units (Low)</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 font-mono">$49.99</td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="text-indigo-400 hover:text-indigo-300 font-medium px-3 py-1 rounded hover:bg-indigo-500/10 transition">Manage</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/20 transition">
+                            <td class="px-6 py-4 font-medium text-slate-200">ErgoSit Pro Mechanical Chair</td>
+                            <td class="px-6 py-4 font-mono text-xs text-slate-400">SKU-FURN-3302</td>
+                            <td class="px-6 py-4 text-slate-400">Furniture</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                    <span>120 Units</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 font-mono">$349.50</td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="text-indigo-400 hover:text-indigo-300 font-medium px-3 py-1 rounded hover:bg-indigo-500/10 transition">Manage</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
